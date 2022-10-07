@@ -392,6 +392,38 @@ static void dm_thread(void)
 					nrf_dm_populate_report(&report);
 					nrf_dm_calc(&report);
 					process_data(&report);
+
+					printk("index");
+					for (uint8_t index=0; index<80; index++)
+					{
+						printk("%i, ", index);	
+					}
+
+					printk("initiator i samples");					
+					for (uint8_t index=0; index<80; index++)
+					{
+						printk("%f, ", report.iq_tones[0].i_local[index]);
+					}
+
+					printk("q samples");
+					for (uint8_t index=0; index<80; index++)
+					{
+						printk("%f, ", report.iq_tones[0].q_local[index]);
+					}
+
+					printk("reflector i samples");					
+					for (uint8_t index=0; index<80; index++)
+					{
+						printk("%f, ", report.iq_tones[0].i_remote[index]);
+					}
+
+					printk("q samples");
+					for (uint8_t index=0; index<80; index++)
+					{
+						printk("%f, ", report.iq_tones[0].q_remote[index]);
+					}
+
+					
 				}
 
 				if (dm_context.cb->data_ready != NULL) {
